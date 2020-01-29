@@ -1,6 +1,6 @@
-docker build -t armangurkan1/multi-client:latest -t ./client/Dockerfile ./client
-docker build -t armangurkan1/multi-server:latest -t ./server/Dockerfile ./server
-docker build -t armangurkan1/multi-worker:latest -t ./worker/Dockerfile ./worker
+docker build -t armangurkan1/multi-client:latest -f ./client/Dockerfile ./client
+docker build -t armangurkan1/multi-server:latest -f ./server/Dockerfile ./server
+docker build -t armangurkan1/multi-worker:latest -f ./worker/Dockerfile ./worker
 docker push armangurkan1/multi-client:latest
 docker push armangurkan1/multi-server:latest
 docker push armangurkan1/multi-worker:latest
