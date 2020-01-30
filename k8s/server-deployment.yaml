@@ -17,6 +17,7 @@ spec:
           image: stephengrider/multi-server
           ports:
             - containerPort: 5000
+          imagePullPolicy: Always
           env:
             - name: REDIS_HOST
               value: redis-cluster-ip-service
