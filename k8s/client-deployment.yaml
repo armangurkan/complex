@@ -7,12 +7,10 @@ spec:
   selector:
     matchLabels:
       component: web
-      app: web
   template:
     metadata:
       labels:
         component: web
-        app: web
     spec:
       containers:
         - name: client
