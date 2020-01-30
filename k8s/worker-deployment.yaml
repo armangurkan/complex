@@ -7,10 +7,12 @@ spec:
   selector:
     matchLabels:
       component: worker
+      app: worker
   template:
     metadata:
       labels:
         component: worker
+        app: worker
     spec:
       containers:
         - name: worker
