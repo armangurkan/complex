@@ -37,7 +37,7 @@ spec:
     spec:
       containers:
         - name: client
-          image: stephengrider/multi-client
+          image: armangurkan1/multi-client
           ports:
             - containerPort: 3000
           imagePullPolicy: Always

@@ -50,7 +50,7 @@ spec:
 
 ---
 apiVersion: networking.istio.io/v1alpha3
-kind: "Virtual Service"
+kind: VirtualService
 metadata:
     name: server-cluster-ip-service
     namespace: default
