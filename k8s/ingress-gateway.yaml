@@ -8,8 +8,8 @@ spec:
     servers:
         - port:
               number: 80
-              name: http
-              protocol: HTTP
+              name: http2
+              protocol: TCP
           hosts:
               - "*"   # Domain name of the external website
 ---
@@ -26,17 +26,11 @@ spec:
     http:
         -
             match:
-                -
-                    uri:
-                        prefix: /experimental
-                -
-                    uri:
-                        prefix: /canary
+                - uri:
+                      prefix: /api
             route:
-                -
-                    destination:
-                        host: client-cluster-ip-service
-                        subset: experimental
+                - destination:
+                      host: server-cluster-ip-service
         -
             match:
                 -
@@ -47,28 +41,12 @@ spec:
                     destination:
                         host: client-cluster-ip-service
                         subset: original
+                    weight: 100
+                - destination:
+                      host: client-cluster-ip-service
+                      subset: experimental
+                  weight: 0
 
----
-apiVersion: networking.istio.io/v1alpha3
-kind: VirtualService
-metadata:
-    name: server-cluster-ip-service
-    namespace: default
-spec:
-    gateways:
-        - ingress-gateway-configuration
-    hosts:
-        - "*"
-    http:
-        -
-            match:
-                -
-                    uri:
-                        prefix: /api
-            route:
-                -
-                    destination:
-                        host: server-cluster-ip-service
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
