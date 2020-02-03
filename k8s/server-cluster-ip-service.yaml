@@ -8,4 +8,5 @@ spec:
     app: server
   ports:
     - port: 5000
+      name: http
       targetPort: 5000
